@@ -20,6 +20,19 @@ func base2ToBase10(num string) (float64, error) {
 }
 
 func base10ToBase2(num float64) (string, error) {
+	var trail []int
+	for eps := 0; eps < 20; eps++ {
+		num *= 2
+		if num >= 1 {
+			num -= 1
+			trail = append(trail, 1)
+		} else {
+			trail = append(trail, 0)
+		}
+		if num == 0 {
+			break
+		}
+	}
 	return "", nil
 }
 
